@@ -2,34 +2,46 @@ package org.enrollment.lecture.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Enrollment {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private Long lectureId;
+
+    @Column(nullable = false)
+    private Long userId;
+
     @Comment("수강일")
     private LocalDateTime enrolledAt;
 
-    @ManyToOne
-    private Lecture lecture;
+    public Enrollment(long lectureId, long userId) {
+        this.lectureId = lectureId;
+        this.userId = userId;
+    }
 
-    @ManyToOne
-    private UserAccount userAccount;
-
-    public Enrollment(Lecture lecture, UserAccount userAccount) {
-        this.lecture = lecture;
-        this.userAccount = userAccount;
+    public Enrollment(Long id, long lectureId, long userId) {
+        this.id = id;
+        this.lectureId = lectureId;
+        this.userId = userId;
     }
 
     public static Enrollment of(long lectureId, long userId) {
-        return new Enrollment(Lecture.of(lectureId), UserAccount.of(userId));
+        return new Enrollment(lectureId, userId);
+    }
+
+    public static Enrollment of(Long id, long lectureId, long userId) {
+        return new Enrollment(id, lectureId, userId);
     }
 
     @PrePersist

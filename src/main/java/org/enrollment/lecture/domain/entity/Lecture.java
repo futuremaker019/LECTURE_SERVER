@@ -20,10 +20,7 @@ public class Lecture {
     private Long id;
 
     @Column(columnDefinition = "varchar(50) comment '강의명'")
-    private String title;
-
-    @OneToMany
-    private List<Enrollment> enrollments = new ArrayList<>();
+    private String name;
 
     public Lecture(Long id) {
         this.id = id;

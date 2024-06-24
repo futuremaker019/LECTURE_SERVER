@@ -21,7 +21,7 @@ public class LectureController {
     }
 
     // 신청된 특강들 확인
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<String> selectEnrolledLectureList() {
         return ResponseEntity.ok().body("hello");
     }

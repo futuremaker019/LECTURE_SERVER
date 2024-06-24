@@ -10,8 +10,8 @@ public record LectureRequestDto(long lectureId, long userId) {
         return new LectureRequestDto(lectureId, userId);
     }
 
-    public Lecture to() {
-        return null;
+    public Enrollment enroll() {
+        return Enrollment.of(this.lectureId, this.userId);
     }
 
 }
