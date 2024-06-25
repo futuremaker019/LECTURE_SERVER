@@ -5,7 +5,10 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,14 @@ public class Lecture {
 
     @Column(columnDefinition = "varchar(50) comment '강의명'")
     private String name;
+
+    @Comment("개강일")
+    private LocalDate openedAt;
+
+    @PrePersist
+    public void openedAt() {
+        this.openedAt = LocalDate.now();
+    }
 
     public Lecture(Long id) {
         this.id = id;

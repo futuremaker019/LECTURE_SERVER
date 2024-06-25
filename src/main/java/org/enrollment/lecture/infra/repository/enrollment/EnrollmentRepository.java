@@ -9,7 +9,7 @@ import java.util.Optional;
  */
 public interface EnrollmentRepository {
 
-    Optional<Enrollment> findById(Long id);
+    Enrollment findById(Long id);
 
     Enrollment save(Enrollment enrollment);
 

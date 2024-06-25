@@ -1,4 +1,4 @@
-insert into lecture (name) values ('special-lecture');
+insert into lecture (name, opened_at) values ('special-lecture', '2024-06-25');
 
 insert into user_account (name) values ('Catie'),
                                        ('Star'),

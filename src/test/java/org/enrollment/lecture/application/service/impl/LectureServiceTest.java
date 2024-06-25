@@ -1,10 +1,10 @@
 package org.enrollment.lecture.application.service.impl;
 
+import org.enrollment.lecture.application.service.LectureService;
 import org.enrollment.lecture.domain.dto.lecture.LectureRequestDto;
 import org.enrollment.lecture.domain.entity.Enrollment;
 import org.enrollment.lecture.domain.entity.Lecture;
 import org.enrollment.lecture.domain.entity.UserAccount;
-import org.enrollment.lecture.infra.repository.enrollment.EnrollmentJpaRepository;
 import org.enrollment.lecture.infra.repository.enrollment.EnrollmentRepository;
 import org.enrollment.lecture.infra.repository.lecture.LectureRepository;
 import org.enrollment.lecture.infra.repository.userAccount.UserAccountRepository;
@@ -23,9 +23,10 @@ import static org.mockito.BDDMockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
-class LectureServiceImplTest {
+class LectureServiceTest {
 
-    @InjectMocks LectureServiceImpl sut;
+    @InjectMocks
+    LectureService sut;
 
     @Mock LectureRepository lectureRepository;
     @Mock UserAccountRepository userAccountRepository;
